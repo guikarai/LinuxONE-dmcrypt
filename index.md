@@ -12,6 +12,10 @@ Objectives of the following is to describe how to migrate business data of a Lin
 
 #### Simple software stack
 #### Existing Logical Volume (LV1 and LV2)
+Use lvdisplay command as shown below, to view the available logical volumes with its attributes.
+```
+sudo lvdysplay
+```
 #### Existing Volume Group (VG)
 #### Existing Physical Device (PV1)
 
