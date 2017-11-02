@@ -52,17 +52,17 @@ cryptsetup luksOpen /dev/dasdd1 dasdd1_crypt
 ```
 The command below opens the luks device and maps it as "dasdd1_crypt"
 
-#### 3) Use the device as physical volume (PV2)
+#### 3) Use the device as physical volume
 ```
 pvcreate /dev/mapper/dasdd1_crypt
 ```
 
-#### 4) Add the dm-crypt based physical volume (PV) to the existing volume group (VG)
+#### 4) Add the dm-crypt based physical volume to the existing volume group
 ```
 vgextend VG /dev/mapper/dasdd1_crypt
 ```
 
-#### 5) Migrate data from V1 to V2
+#### 5) Migrate data clear to encrypted
 ```
 pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
 ```
