@@ -8,7 +8,7 @@ Pervasive Encryption for Linux provides
 
 Objectives of the following is to describe how to migrate business data of a Linux environment from a clear to an encrypted file system. 
 
-![Overview](https://github.com/guikarai/LinuxONE-dmcrypt/blob/master/data-migration-objective.png | =600x200)
+![Overview](https://github.com/guikarai/LinuxONE-dmcrypt/blob/master/data-migration-objective.png | width=100)
 
 ### Existing configuration overview
 
