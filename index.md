@@ -29,17 +29,18 @@ umount /dev/dasdd1
 ```
 
 ### Use DM-Crypt to Create an Encrypted Volume
+
+#### 1) Create luks partition
 ```
 cryptsetup luksFormat --hash=sha512 --key-size=512 --cipher=aes-xts-plain64 --verify-passphrase /dev/dasdd1
 ```
-#### 1) Create luks partition
-```
-```
+You can use different settings for the luksFormat command; I recommand to use aes-xts based ciphers for the best performance. After that you will be asked to enter a password for the encryption, it doesn't matter if it's not very secure now, because we will only use this device as random data generator.
 
-#### 2) Open the encrypted device: the command below opens the luks device and maps it as "dasdd1_crypt"
+#### 2) Open the encrypted device
 ```
 cryptsetup luksOpen /dev/dasdd1 dasdd1_crypt
 ```
+The command below opens the luks device and maps it as "dasdd1_crypt"
 
 #### 3) Use the device as physical volume (PV2)
 ```
