@@ -17,10 +17,10 @@ Objectives of the following is to describe how to migrate business data of a Lin
 
 #### Installing the dm-crypt Tools
 You need to get the necessary tools by updating our local package index and installing the dm-crypt tools:
-
-> *apt-get update*
-> *apt-get install cryptsetup*
-
+'''
+apt-get update
+apt-get install cryptsetup
+'''
 This will pull in all of the required dependencies and helper utilities needed to work with a dm-crypt volume.
 
 #### Dismount the volume to be protected with dm-crypt
