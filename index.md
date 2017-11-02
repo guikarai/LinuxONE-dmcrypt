@@ -18,24 +18,24 @@ Objectives of the following is to describe how to migrate business data of a Lin
 #### Installing the dm-crypt Tools
 You need to get the necessary tools by updating our local package index and installing the dm-crypt tools:
 
-  *apt-get update*
-  *apt-get install cryptsetup*
+*apt-get update*
+*apt-get install cryptsetup*
 
 This will pull in all of the required dependencies and helper utilities needed to work with a dm-crypt volume.
 
 #### Dismount the volume to be protected with dm-crypt
-  *umount /dev/dasdd1*
+*umount /dev/dasdd1*
 
 ### Use DM-Crypt to Create an Encrypted Volume
 
 #### 1) Create luks partition
-  *cryptsetup luksFormat --hash=sha512 --key-size=512 --cipher=aes-xts-plain64 --verify-passphrase /dev/dasdd1*
+*cryptsetup luksFormat --hash=sha512 --key-size=512 --cipher=aes-xts-plain64 --verify-passphrase /dev/dasdd1*
 
 #### 2) Open the encrypted device: the command below opens the luks device and maps it as "dasdd1_crypt"
-  *cryptsetup luksOpen /dev/dasdd1 dasdd1_crypt*
+*cryptsetup luksOpen /dev/dasdd1 dasdd1_crypt*
 
 #### 3) Use the device as physical volume (PV2)
-  *pvcreate /dev/mapper/dasdd1_crypt*
+*pvcreate /dev/mapper/dasdd1_crypt*
 
 #### 4) Add the dm-crypt based physical volume (PV) to the existing volume group (VG)
   *vgextend VG /dev/mapper/dasdd1_crypt*
