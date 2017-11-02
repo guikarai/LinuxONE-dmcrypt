@@ -19,9 +19,11 @@ Use lvdisplay command as shown below, to view the available logical volumes with
 sudo lvdysplay
 ```
 #### Acronysm for the following
+* LV1 is
 * VG is 
 * DV1 is
 * PV1 is
+* V1 is
 
 #### Dismount the volume to be protected with dm-crypt
 ```
@@ -64,13 +66,3 @@ vgextend VG /dev/mapper/dasdd1_crypt
 ```
 pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
 ```
-
-#### Summary
-LV1 -
-LV2 -
-VG -
-PV1 -
-PV2 -
-DMV -
-V1 -
-V2 -
