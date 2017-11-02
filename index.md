@@ -7,6 +7,7 @@ Pervasive Encryption for Linux provides
 – a trusted computing environment for sensitive appliances through Secure Service Containers
 
 Objectives of the following is to describe how to migrate business data of a Linux environment from a clear to an encrypted file system.
+![GitHub Logo](/images/logo.png)
 
 ### Existing configuration overview
 
