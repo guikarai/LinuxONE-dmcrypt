@@ -6,7 +6,7 @@ Pervasive Encryption for Linux provides
 – extended security for data at-rest with protected key dm-crypt
 – a trusted computing environment for sensitive appliances through Secure Service Containers
 
-Objectives of the following is to describe how to migrate business data of a Linux environment from a clear to an encrypted file system.
+Objectives of the following is to describe how to migrate business data of a Linux environment from a clear to an encrypted file system. 
 
 ![Image of Yaktocat](https://github.com/guikarai/LinuxONE-dmcrypt/blob/master/data-migration-objective.png?raw=true)
 
