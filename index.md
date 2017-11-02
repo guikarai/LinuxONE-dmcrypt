@@ -13,13 +13,22 @@ Objectives of the following is to describe how to migrate business data of a Lin
 ### Existing configuration overview
 
 #### Simple software stack
-#### Existing Logical Volume (LV1 and LV2)
+#### Existing Logical Volume
 Use lvdisplay command as shown below, to view the available logical volumes with its attributes.
 ```
 sudo lvdysplay
 ```
-#### Existing Volume Group (VG)
-#### Existing Physical Device (PV1)
+#### Acronysm for the following
+* VG is 
+* DV1 is
+* PV1 is
+
+#### Dismount the volume to be protected with dm-crypt
+```
+umount /dev/dasdd1
+```
+
+### Use DM-Crypt to Create an Encrypted Volume
 
 #### Installing the dm-crypt Tools
 You need to get the necessary tools by updating our local package index and installing the dm-crypt tools:
@@ -28,13 +37,6 @@ apt-get update
 apt-get install cryptsetup
 ```
 This will pull in all of the required dependencies and helper utilities needed to work with a dm-crypt volume.
-
-#### Dismount the volume to be protected with dm-crypt
-```
-umount /dev/dasdd1
-```
-
-### Use DM-Crypt to Create an Encrypted Volume
 
 #### 1) Create luks partition
 ```
