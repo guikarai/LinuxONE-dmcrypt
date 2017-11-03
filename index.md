@@ -101,6 +101,35 @@ sudo lvdysplay
 * PV1 is
 * V1 is
 
+#### Optimization of dmcrypt performance
+modprobe aes_s390
+modprobe des_s390
+modprobe sha1_s390
+modprobe sha256_s390
+modprobe sha512_s390
+
+#### Initial dmcrypt performance
+cryptsetup benchmark
+ Tests are approximate using memory only (no storage IO).
+PBKDF2-sha1       688041 iterations per second
+PBKDF2-sha256     418092 iterations per second
+PBKDF2-sha512     198895 iterations per second
+PBKDF2-ripemd160  557160 iterations per second
+PBKDF2-whirlpool  149454 iterations per second
+  Algorithm | Key |  Encryption |  Decryption
+     aes-cbc   128b  1991.9 MiB/s  1940.2 MiB/s
+ serpent-cbc   128b    74.5 MiB/s    88.6 MiB/s
+ twofish-cbc   128b   146.7 MiB/s   176.9 MiB/s
+     aes-cbc   256b  1671.8 MiB/s  1652.2 MiB/s
+ serpent-cbc   256b    73.4 MiB/s    88.6 MiB/s
+ twofish-cbc   256b   146.3 MiB/s   173.2 MiB/s
+     aes-xts   256b  1902.0 MiB/s  1898.5 MiB/s
+ serpent-xts   256b    78.0 MiB/s    81.0 MiB/s
+ twofish-xts   256b   161.4 MiB/s   158.3 MiB/s
+     aes-xts   512b  1580.3 MiB/s  1573.7 MiB/s
+ serpent-xts   512b    77.7 MiB/s    84.7 MiB/s
+ twofish-xts   512b   162.2 MiB/s   167.2 MiB/s
+
 #### Reference Performance Footprint
 root@dmcrypto:/var/lib/docker# docker exec -it redis bash
 root@524183a882a0:/data# redis-benchmark -q -n 100000
@@ -317,3 +346,27 @@ pvdisplay
  ```
  
  #### 10) Assess Application are still running
+ 
+#### 11) Performance Assessment with Crypted FS
+```
+redis-benchmark -q -n 100000
+PING_INLINE: 90009.00 requests per second
+PING_BULK: 101010.10 requests per second
+SET: 96246.39 requests per second
+GET: 98135.43 requests per second
+INCR: 97465.89 requests per second
+LPUSH: 94339.62 requests per second
+RPUSH: 95969.29 requests per second
+LPOP: 93720.71 requests per second
+RPOP: 96246.39 requests per second
+SADD: 96339.12 requests per second
+HSET: 95877.27 requests per second
+SPOP: 99009.90 requests per second
+LPUSH (needed to benchmark LRANGE): 91743.12 requests per second
+LRANGE_100 (first 100 elements): 38446.75 requests per second
+LRANGE_300 (first 300 elements): 14914.24 requests per second
+LRANGE_500 (first 450 elements): 10542.96 requests per second
+LRANGE_600 (first 600 elements): 8194.71 requests per second
+MSET (10 keys): 67567.57 requests per second
+```
+ 
