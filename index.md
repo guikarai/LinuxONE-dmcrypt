@@ -213,7 +213,47 @@ vgdisplay
 
 #### 6) Migrate data clear to encrypted
 ```
-pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
+pvmove /dev/dasde1 /dev/mapper/dasdd1_crypt
+  /dev/dasde1: Moved: 0.1%
+  /dev/dasde1: Moved: 15.4%
+  /dev/dasde1: Moved: 38.7%
+  /dev/dasde1: Moved: 58.3%
+  /dev/dasde1: Moved: 79.5%
+  /dev/dasde1: Moved: 91.3%
+  /dev/dasde1: Moved: 100.0%
+  
+  ```
+#### 7) Assess if application are still running
+
+  ```
+root@dmcrypto:/var/lib/docker# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+524183a882a0        s390x/redis         "docker-entrypoint.sh"   12 minutes ago      Up 12 minutes       6379/tcp            redis
+
 ```
 
-
+#### 8) Assess change in Volume Group Structure
+```
+root@dmcrypto:/var/lib/docker# vgdisplay
+  --- Volume group ---
+  VG Name               vg4730
+  System ID
+  Format                lvm2
+  Metadata Areas        2
+  Metadata Sequence No  6
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                1
+  Open LV               1
+  Max PV                0
+  Cur PV                2
+  Act PV                2
+  VG Size               11.99 GiB
+  PE Size               4.00 MiB
+  Total PE              3070
+  Alloc PE / Size       1535 / 6.00 GiB
+  Free  PE / Size       1535 / 6.00 GiB
+  VG UUID               DNDKh0-i7Bf-h5HP-JDdY-jrHV-qfPl-uNu5BN
+ ```
+ 
