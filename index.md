@@ -182,10 +182,36 @@ pvdisplay
 
 #### 4) Add the dm-crypt based physical volume to the existing volume group
 ```
-vgextend VG /dev/mapper/dasdd1_crypt
+vgextend vg4730 /dev/mapper/dasdd1_crypt
+  Volume group "vg4730" successfully extended
 ```
 
-#### 5) Migrate data clear to encrypted
+#### 5) Assess change
+```
+vgdisplay
+  --- Volume group ---
+  VG Name               vg4730
+  System ID
+  Format                lvm2
+  Metadata Areas        2
+  Metadata Sequence No  3
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                1
+  Open LV               1
+  Max PV                0
+  Cur PV                2
+  Act PV                2
+  VG Size               11.99 GiB
+  PE Size               4.00 MiB
+  Total PE              3070
+  Alloc PE / Size       1535 / 6.00 GiB
+  Free  PE / Size       1535 / 6.00 GiB
+  VG UUID               DNDKh0-i7Bf-h5HP-JDdY-jrHV-qfPl-uNu5BN
+```
+
+#### 6) Migrate data clear to encrypted
 ```
 pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
 ```
