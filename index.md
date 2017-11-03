@@ -71,17 +71,6 @@ The command below opens the luks device and maps it as "dasdd1_crypt"
 ```
 pvcreate /dev/mapper/dasdd1_crypt
 ```
-
-#### 4) Add the dm-crypt based physical volume to the existing volume group
-```
-vgextend VG /dev/mapper/dasdd1_crypt
-```
-
-#### 5) Migrate data clear to encrypted
-```
-pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
-```
-
 ```
 pvdisplay
   --- Physical volume ---
@@ -107,3 +96,15 @@ pvdisplay
   Allocated PE          0
   PV UUID               osm0yD-gvOq-inc5-81a5-oR39-feh6-IyQ0G4
 ```
+
+#### 4) Add the dm-crypt based physical volume to the existing volume group
+```
+vgextend VG /dev/mapper/dasdd1_crypt
+```
+
+#### 5) Migrate data clear to encrypted
+```
+pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
+```
+
+
