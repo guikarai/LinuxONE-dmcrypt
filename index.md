@@ -66,3 +66,28 @@ vgextend VG /dev/mapper/dasdd1_crypt
 ```
 pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
 ```
+'''
+pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/dasde1
+  VG Name               vg4730
+  PV Size               6.00 GiB / not usable 4.52 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              1535
+  Free PE               0
+  Allocated PE          1535
+  PV UUID               WgTHMe-0dU8-Fgz0-RQj3-Ed6b-6eIw-oBzE1M
+
+  "/dev/mapper/dasdd1_crypt" is a new physical volume of "6.00 GiB"
+  --- NEW Physical volume ---
+  PV Name               /dev/mapper/dasdd1_crypt
+  VG Name
+  PV Size               6.00 GiB
+  Allocatable           NO
+  PE Size               0
+  Total PE              0
+  Free PE               0
+  Allocated PE          0
+  PV UUID               osm0yD-gvOq-inc5-81a5-oR39-feh6-IyQ0G4
+  '''
