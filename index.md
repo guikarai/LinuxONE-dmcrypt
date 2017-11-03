@@ -11,6 +11,21 @@ Objectives of the following is to describe how to migrate business data of a Lin
 ![Overview](https://github.com/guikarai/LinuxONE-dmcrypt/blob/master/data-migration-objective.png?raw=true)
 
 ### Existing configuration overview
+```
+pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/dasde1
+  VG Name               vg4730
+  PV Size               6.00 GiB / not usable 4.52 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              1535
+  Free PE               0
+  Allocated PE          1535
+  PV UUID               WgTHMe-0dU8-Fgz0-RQj3-Ed6b-6eIw-oBzE1M
+ ``` 
+ vgdisplay
+ 
 
 #### Simple software stack
 #### Existing Logical Volume
@@ -66,6 +81,7 @@ vgextend VG /dev/mapper/dasdd1_crypt
 ```
 pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
 ```
+
 ```
 pvdisplay
   --- Physical volume ---
