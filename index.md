@@ -102,13 +102,16 @@ sudo lvdysplay
 * V1 is
 
 #### Optimization of dmcrypt performance
+```
 modprobe aes_s390
 modprobe des_s390
 modprobe sha1_s390
 modprobe sha256_s390
 modprobe sha512_s390
+```
 
 #### Initial dmcrypt performance
+```
 cryptsetup benchmark
  Tests are approximate using memory only (no storage IO).
 PBKDF2-sha1       688041 iterations per second
@@ -129,10 +132,15 @@ PBKDF2-whirlpool  149454 iterations per second
      aes-xts   512b  1580.3 MiB/s  1573.7 MiB/s
  serpent-xts   512b    77.7 MiB/s    84.7 MiB/s
  twofish-xts   512b   162.2 MiB/s   167.2 MiB/s
+```
 
 #### Reference Performance Footprint
-root@dmcrypto:/var/lib/docker# docker exec -it redis bash
-root@524183a882a0:/data# redis-benchmark -q -n 100000
+```
+docker exec -it redis bash
+```
+Once on the redis container, please issue the following command:
+```
+redis-benchmark -q -n 100000
 PING_INLINE: 101832.99 requests per second
 PING_BULK: 99304.87 requests per second
 SET: 94428.70 requests per second
@@ -151,7 +159,9 @@ LRANGE_300 (first 300 elements): 16801.08 requests per second
 LRANGE_500 (first 450 elements): 11799.41 requests per second
 LRANGE_600 (first 600 elements): 9602.46 requests per second
 MSET (10 keys): 73475.38 requests per second
- 
+``` 
+These performance data will be used later to assess the impact of file system encryption. This data can be considerer as reference data.
+
 #### Dismount the volume to be protected with dm-crypt
 ```
 umount /dev/dasdd1
