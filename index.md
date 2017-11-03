@@ -66,7 +66,7 @@ vgextend VG /dev/mapper/dasdd1_crypt
 ```
 pvmove /dev/mapper/dasdd1_clear /dev/mapper/dasdd1_crypt
 ```
-'''
+```
 pvdisplay
   --- Physical volume ---
   PV Name               /dev/dasde1
@@ -90,4 +90,4 @@ pvdisplay
   Free PE               0
   Allocated PE          0
   PV UUID               osm0yD-gvOq-inc5-81a5-oR39-feh6-IyQ0G4
-  '''
+```
